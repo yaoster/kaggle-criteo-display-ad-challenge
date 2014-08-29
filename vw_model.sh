@@ -8,7 +8,7 @@ MODEL_OUTPUT='logreg.model'
 TEST_PREDICTIONS=${2}.pred
 
 # train the model
-time vw -d $1 -f $MODEL_OUTPUT --loss_function logistic -c --power_t 0.5 --passes 5
+time vw -d $1 -f $MODEL_OUTPUT --loss_function logistic -c --power_t 0.5 --passes 1 --readable_model logreg.model.txt -b 30
 
 # run it on a test/validation set and output the predictions
 # this will output the log loss if run on the validation set (ie, if the 2nd argument has labels for each example)
