@@ -4,11 +4,12 @@
 # Example:
 #     ./vw_model.sh train.txt test.txt
 
-MODEL_OUTPUT='logreg.model'
+MODEL_OUTPUT=${1}.model
 TEST_PREDICTIONS=${2}.pred
 
 # train the model
-time vw -d $1 -f $MODEL_OUTPUT --loss_function logistic -c --power_t 0.5 --passes 1 --readable_model logreg.model.txt -b 30
+time vw -d $1 -f $MODEL_OUTPUT --loss_function logistic -l 2.0 --power_t 0.75 --passes 5 --readable_model logreg.model.txt -b 29 -k -c
+#time vw -d $1 -f $MODEL_OUTPUT --loss_function logistic --nn 23 -l 0.71626 --power_t 0.39208 --passes 10 -b 29 -k -c 
 
 # run it on a test/validation set and output the predictions
 # this will output the log loss if run on the validation set (ie, if the 2nd argument has labels for each example)
